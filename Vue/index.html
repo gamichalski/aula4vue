@@ -1,0 +1,60 @@
+<html>
+
+<head>
+	<title>Exemplo com vue</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+		.has-padding-20 {
+			padding: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container" id="app">
+		<h1 class="title has-text-centered has-padding-20">{{ title }}</h1>
+		<div class="field has-addons">
+			<div class="control is-expanded">
+				<input class="input" @keypress.enter="insertNewTask(item)" v-model="item" placeholder="Adicionar novo item">
+      </div>
+				<div class="control">
+					<button class="button is-info" @click="insertNewTask(item)" v-if="item">
+						Inserir
+					</button>
+				</div>
+			</div>
+			<div v-for="task in tasks" class="box">
+				<div v-if="task.isEditing">
+					<div class="field has-addons">
+						<div class="control is-expanded">
+							<input class="input is-small" v-model="task.newDescription">
+			      </div>
+							<div class="control">
+								<button class="button is-small" @click="cancelEditingMode(task)">
+                  Cancelar
+                </button>
+								<button class="button is-small is-pulled-right" @click="saveEditing(task)">
+                  Salvar
+                </button>
+							</div>
+						</div>
+					</div>
+					<div v-else>
+						<input type="checkbox" v-model="task.done">
+						<del v-if="task.done">
+							{{ task.description }}
+						</del>
+						<span v-else>
+            {{ task.description }}
+          </span>
+						<button v-if="!task.done" class="button is-small is-pulled-right" @click="setEditingMode(task)">
+            Editar
+          </button>
+					</div>
+				</div>
+			</div>
+			<script src="script.js"></script>
+</body>
+
+</html>
