@@ -1,0 +1,37 @@
+<html>
+
+<head>
+	<title>Exemplo Manipulacao DOM</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+	<style>
+		.has-padding-20 {
+			padding: 20px
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="is-flex has-padding-20">
+			<input class="input" type="text" placeholder="Autor" id="autor">
+			<input class="input" type="text" placeholder="Mensagem" id="mensagem">
+			<button class="button" id="novo_item">Inserir Novo</button>
+		</div>
+		<div id="posts">
+			<div class="card">
+				<div class="card-content">
+					<p class="title">
+						“There are two hard things in computer science: cache invalidation, naming things, and
+						off-by-one errors.”
+					</p>
+					<p class="subtitle">
+						Jeff Atwood
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>
